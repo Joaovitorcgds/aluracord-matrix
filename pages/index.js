@@ -1,5 +1,7 @@
 import { Box, Button, Image, Text, TextField} from "@skynexui/components" 
-import {GlobalStyle} from "../styles/index"
+import { useState } from "react"
+import { useRouter } from "next/router"
+
 import appConfig from "../config.json"
 
 function Title(props){
@@ -24,25 +26,12 @@ function Title(props){
 }
 
 
-
-// function HomePage(){
-//     return(
-//         <div>
-//             <GlobalStyle/>
-//             <Title tag="p">Boas vindas de voltaaass!</Title>
-//             <h2>Discord - alura matrix</h2>
-//         </div>
-//     )
-// }
-
-// export default HomePage
-
 export default function PaginaInicial() {
-    const username = 'peas';
+    const [username, setUsername] = useState("");
+    const roteamento = useRouter();
   
     return (
       <>
-        <GlobalStyle />
         <Box
           styleSheet={{
             display: 'flex', alignItems: 'center', justifyContent: 'center',
@@ -69,6 +58,10 @@ export default function PaginaInicial() {
             {/* Formulário */}
             <Box
               as="form"
+              onSubmit={e => {
+                e.preventDefault();
+                roteamento.push("/chat");
+              }}
               styleSheet={{
                 display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
                 width: { xs: '100%', sm: '50%' }, textAlign: 'center', marginBottom: '32px',
@@ -88,6 +81,11 @@ export default function PaginaInicial() {
                     mainColorHighlight: appConfig.theme.colors.primary[500],
                     backgroundColor: appConfig.theme.colors.neutrals[800],
                   },
+                }}
+                onChange={e => {
+                  const valor = e.target.value;
+                  setUsername(valor)
+                    
                 }}
               />
               <Button

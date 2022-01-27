@@ -1,4 +1,4 @@
-export function GlobalStyle(){
+function GlobalStyle(){
     return(
         <style global jsx>{`
             * {
@@ -34,3 +34,13 @@ export function GlobalStyle(){
         </style>
     )
 } 
+
+export default function myApp({ Component, pageProps }){
+
+    return(
+        <>
+            <GlobalStyle/>
+            <Component {...pageProps}/>
+        </>
+    )
+}
