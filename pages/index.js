@@ -38,8 +38,7 @@ export default function PaginaInicial() {
             backgroundColor: appConfig.theme.colors.primary[500],
             backgroundImage: 'url(https://virtualbackgrounds.site/wp-content/uploads/2020/08/the-matrix-digital-rain.jpg)',
             backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundBlendMode: 'multiply',
-          }}
-        >
+          }}>
           <Box
             styleSheet={{
               display: 'flex',
@@ -53,8 +52,7 @@ export default function PaginaInicial() {
               borderRadius: '5px', padding: '32px', margin: '16px',
               boxShadow: '0 2px 10px 0 rgb(0 0 0 / 20%)',
               backgroundColor: appConfig.theme.colors.neutrals[700],
-            }}
-          >
+            }}>
             {/* Formulário */}
             <Box
               as="form"
@@ -68,8 +66,10 @@ export default function PaginaInicial() {
               }}
             >
               <Title tag="h2">Boas vindas de volta!</Title>
-              <Text variant="body3" styleSheet={{ marginBottom: '32px', color: appConfig.theme.colors.neutrals[300] }}>
-                {appConfig.name}
+              <Text variant="body3" 
+                styleSheet={{ marginBottom: '32px', 
+                color: appConfig.theme.colors.neutrals[300] }}>
+                  {appConfig.name}
               </Text>
   
               <TextField
@@ -85,7 +85,6 @@ export default function PaginaInicial() {
                 onChange={e => {
                   const valor = e.target.value;
                   setUsername(valor)
-                    
                 }}
               />
               <Button
@@ -100,10 +99,11 @@ export default function PaginaInicial() {
                 }}
               />
             </Box>
-            {/* Formulário */}
+            {/* Fim do Formulário */}
   
   
             {/* Photo Area */}
+            {username.length > 2 && (
             <Box
               styleSheet={{
                 display: 'flex',
@@ -138,6 +138,7 @@ export default function PaginaInicial() {
                 {username}
               </Text>
             </Box>
+            )}
             {/* Photo Area */}
           </Box>
         </Box>
