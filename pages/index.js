@@ -1,4 +1,4 @@
-import { Box, Button, Image, Text, TextField} from "@skynexui/components" 
+import { Box, Button, Image, Text, TextField} from "@skynexui/components"
 import { useState } from "react"
 import { useRouter } from "next/router"
 
@@ -7,7 +7,7 @@ import appConfig from "../config.json"
 function Title(props){
     const Tag = props.tag || "h1"
     return(
-        <>   
+        <>
             <Tag>
                 {props.children}
             </Tag>
@@ -25,11 +25,10 @@ function Title(props){
     )
 }
 
-
 export default function PaginaInicial() {
     const [username, setUsername] = useState("");
     const roteamento = useRouter();
-  
+
     return (
       <>
         <Box
@@ -58,7 +57,7 @@ export default function PaginaInicial() {
               as="form"
               onSubmit={e => {
                 e.preventDefault();
-                roteamento.push("/chat");
+                roteamento.push(`/chat?username=${username}`);
               }}
               styleSheet={{
                 display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
@@ -66,12 +65,12 @@ export default function PaginaInicial() {
               }}
             >
               <Title tag="h2">Boas vindas de volta!</Title>
-              <Text variant="body3" 
-                styleSheet={{ marginBottom: '32px', 
+              <Text variant="body3"
+                styleSheet={{ marginBottom: '32px',
                 color: appConfig.theme.colors.neutrals[300] }}>
                   {appConfig.name}
               </Text>
-  
+
               <TextField
                 fullWidth
                 textFieldColors={{
@@ -100,8 +99,8 @@ export default function PaginaInicial() {
               />
             </Box>
             {/* Fim do Formulário */}
-  
-  
+
+
             {/* Photo Area */}
             {username.length > 2 && (
             <Box
@@ -144,4 +143,4 @@ export default function PaginaInicial() {
         </Box>
       </>
     );
-  } 
+  }
